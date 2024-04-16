@@ -1,0 +1,54 @@
+@media screen and (max-width: 500px){
+    
+    body{
+        height:181vh;
+    }
+    .title{
+        width:50%;
+        height:30%;
+    }
+    #instruc{
+        font-size: 125%;
+    }
+
+    .pageContainer{
+        gap:20px;
+    }
+
+    .inputContainer{
+        width:50%;
+        flex-direction: column;
+    }
+    .inputContainer p{
+        margin-left: 0px;
+    }
+    button{
+        height:30px;
+    }
+
+    .cloud3{
+        width:159%;
+        height:25%;
+        right:-34%;
+    }
+
+    .cloud1{
+        width:71%;
+        height:16%;
+        bottom: 9%;
+        right:27px;
+    }
+
+    .cloud6{
+        width:125%;
+        bottom:59%;
+        z-index: 0;
+    }
+
+    .cloud4{
+        display:none;
+    }
+    .cloud2{
+        display:none;
+    }
+}

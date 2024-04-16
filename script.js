@@ -57,6 +57,9 @@ let zodiacs = [
     
 ]
 
+let W = window.innerWidth;
+let H = window.innerHeight;
+
 const options = {
     method: 'GET',
     headers: {
@@ -94,7 +97,7 @@ function selectSign(){
                     });
                 
                 let leftCloud = anime({
-                        targets: ['.cloud4', '.cloud5', '.cloud6'],
+                        targets: ['.cloud4','.cloud6'],
                         translateX: -1200,
                         duration: 8000,
                         easing:'linear',
@@ -149,7 +152,7 @@ document.querySelector("a").addEventListener("click",selectSign);
 
 document.addEventListener("DOMContentLoaded", function(){
     
-
+    //for the typewriter effect while cycling back on the phrases.
         async function instructionLoop(){
             console.log("called");
             while(true){

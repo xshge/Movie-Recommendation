@@ -8,19 +8,22 @@ body{
     overflow-x: hidden;
 }
 
-h2{
+h2{ 
+    color:#F5F5F5;
     bottom:2%;
     font-family: "Jua", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 h4{
+    color:#B8BEDD;
     font-family: "Jua", sans-serif;
     font-weight: 400;
     font-style: normal;
     margin-bottom: 0px;
 }
 p{
+    color:#F5F5F5;
     font-family: "Jua", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -44,6 +47,7 @@ p{
     flex-direction: column;
     align-items: center;
     padding-top: 30%;
+    padding-bottom: 20px;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -55,8 +59,8 @@ p{
     margin:5px;
     overflow: hidden;
     position:absolute;
-    bottom:30%;
-    right:0px;
+    bottom:-3%;
+    right:-170px;
 }
 .cloud2{
     width:50%;
@@ -88,8 +92,8 @@ p{
     margin:5px;
     overflow: hidden;
     position:absolute;
-    bottom:16%;
-    left:100px;
+    bottom:10%;
+    left:60px;
 }
 .cloud5{
     width:80%;
