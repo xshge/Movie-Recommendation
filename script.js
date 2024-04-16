@@ -10,13 +10,13 @@ userInput.addEventListener("keyup", function(){
 
 const instructions =[
     "Type in your zodiac sign.",
-    "let's see what movie that you get."
+    "Let's see what movie that you will get."
 ]
 
 const type = document.getElementById("instruc");
 let sleepTime = 100;
 let curIndex = 0;
-
+const spellCheck = "Maybe check your spelling?"
 let zodiacs = [
     {
         "taurus":["569094","10494","545611"]
@@ -35,6 +35,24 @@ let zodiacs = [
     },
     {
         "aquarius":["9090","36685","9003"]
+    },
+    {
+        "capricorn":["254320","531428","252171"]
+    },
+    {
+        "cancer":["258480","530385","773"]
+    },
+    {
+        "virgo":["424781","120467","391713"]
+    },
+    {
+        "gemini":["680","38","458723"]
+    },
+    {
+        "aries":["949423","2109","9470"]
+    },
+    {
+        "pisces":["747188","555604","926899"]
     }
     
 ]
@@ -46,20 +64,56 @@ const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZmVlNjUwZjUyNGE4ODJmN2VkYmZkOTRjNjEzYzZiMCIsInN1YiI6IjY2MTgxYjEyMmIxYjQ0MDE2M2YzZTNiOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iyQua93ws40wtFEUO17A_8q9TWjhbIFeGbn7bMfOoS8'
     }
   };
-
+  
 function selectSign(){
-    for(let i = 0; i< zodiacs.length; i++){
-        for (var key in zodiacs[i]){
-            //make sure it is case insensitive. 
-            var compare = signs.localeCompare(key,undefined, { sensitivity: 'accent' });
-            // console.log(compare);
-            if(compare == 0){
+    let anchor = document.getElementById("skip");
+    loop1:for(let i = 0; i< zodiacs.length; i++){
+         var warn = document.getElementById("warning");
+         for (var key in zodiacs[i]){
+            //make sure it is case insensitive.  
+            //make sure user have inputted something in the text box.
+            if(signs == null){
+                warn.style.opacity= "100%";
+            }else{
+    
+                var compare = signs.localeCompare(key,undefined, { sensitivity: 'accent' });
+                if(compare === 0){
                var numbers = zodiacs[i][key];
                var index = Math.floor(Math.random()*numbers.length);
                 id = numbers[index];
+                warn.style.opacity= "0%";
+                anchor.href='#Result';
+                fetchMovies();
+                let animation = anime({
+                    targets: ['.cloud1','.cloud2', '.cloud3'],
+                    translateX: 1850,
+                    duration: 8000,
+                    easing: 'linear',
+                    delay: anime.stagger(200)
+
+                    });
                 
+                let leftCloud = anime({
+                        targets: ['.cloud4', '.cloud5', '.cloud6'],
+                        translateX: -1200,
+                        duration: 8000,
+                        easing:'linear',
+                        delay: anime.stagger(100)
+            
+                    });
+
+                    break loop1;
+                }else {
+                    // console.log("still here");
+                anchor.href ="javascript:void(0)";
+                warn.style.opacity= "100%";
+                warn.innerText = spellCheck;
             }
+            }
+            //console.log(compare);
+            
         }
+
     }
 }
 function fetchMovies(){
@@ -80,10 +134,7 @@ function displayMovie(choice){
     let movie = document.getElementById("Result");
     movie.innerHTML =`
         <h2>${choice.title}</h2>
-        <div class="poster">
-        <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2${choice.poster_path}" />
-        <img src="asset/cloudframe.png" class="corner"/>
-        </div>
+        <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2${choice.poster_path}"class="poster" />
         <h4>Genre: ${choice.genres[0].name}</h4>
         <p>${choice.overview}</p>
     `;
@@ -94,28 +145,10 @@ function sleep(ms){
 }
 document.querySelector("a").addEventListener("click",selectSign);
 
-document.querySelector("a").addEventListener("click",fetchMovies);
+// document.querySelector("a").addEventListener("click",fetchMovies);
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector("a").addEventListener("click",function(){
-        let animation = anime({
-            targets: ['.cloud1','.cloud2', '.cloud3'],
-            translateX: 1850,
-            duration: 8000,
-            easing: 'linear',
-            delay: anime.stagger(200)
-        
-        });
-
-        let leftCloud = anime({
-            targets: ['.cloud4', '.cloud5', '.cloud6'],
-            translateX: -1200,
-            duration: 8000,
-            easing:'linear',
-            delay: anime.stagger(100)
-
-        });
-    });
+    
 
         async function instructionLoop(){
             console.log("called");
