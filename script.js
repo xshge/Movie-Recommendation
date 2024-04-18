@@ -25,7 +25,7 @@ let zodiacs = [
         "scorpio":["13597","9495","361292"]
     },
     {
-        "libras":["11176","4550","9426"]
+        "libra":["11176","4550","9426"]
     },
     {
         "leo":["350","161","393519"]
@@ -69,6 +69,8 @@ const options = {
   };
   
 function selectSign(){
+    //iterate through the array of sign options in the JSON. Then matches the user input to the signs. 
+
     let anchor = document.getElementById("skip");
     loop1:for(let i = 0; i< zodiacs.length; i++){
          var warn = document.getElementById("warning");
@@ -113,7 +115,7 @@ function selectSign(){
                 warn.innerText = spellCheck;
             }
             }
-            //console.log(compare);
+            //console.log(compare); for debugging.
             
         }
 
@@ -143,12 +145,15 @@ function displayMovie(choice){
     `;
 
 }
+
+//called to create a pause between each letter and between typing in and deleting the phrase. 
+
 function sleep(ms){
     return new Promise((resolves) =>setTimeout(resolves, ms));
 }
 document.querySelector("a").addEventListener("click",selectSign);
 
-// document.querySelector("a").addEventListener("click",fetchMovies);
+
 
 document.addEventListener("DOMContentLoaded", function(){
     
@@ -171,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
 
                 await sleep(sleepTime * 5);
-
+                //cycling phrases that I have. 
                 if(curIndex === instructions.length -1){
                     curIndex = 0;
                 }else{
